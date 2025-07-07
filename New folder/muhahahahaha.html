@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You, Praveena 💖</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to right, #fffaf6, #fcefee);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #gameContainer {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.1);
+      padding: 40px;
+      max-width: 600px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #c2185b;
+    }
+
+    .button {
+      background-color: #c2185b;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      margin-top: 20px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background-color: #a0154a;
+    }
+
+    .heart {
+      width: 50px;
+      height: 50px;
+      background: red;
+      position: absolute;
+      top: 30%;
+      left: 45%;
+      transform: rotate(45deg);
+      cursor: pointer;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -25px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -25px;
+      top: 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      font-size: 18px;
+      line-height: 1.6;
+      text-align: left;
+      margin-top: 20px;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="gameContainer">
+    <div id="screen1">
+      <h1>Welcome, Praveena 💖</h1>
+      <p>A little journey just for you…</p>
+      <button class="button" onclick="goToScreen(2)">Start</button>
+    </div>
+
+    <div id="screen2" class="hidden">
+      <h1>Level 1</h1>
+      <p>Find the glowing heart and click it!</p>
+      <div class="heart" onclick="goToScreen(3)"></div>
+    </div>
+
+    <div id="screen3" class="hidden">
+      <h1>Level 2</h1>
+      <p>How long have we known each other?</p>
+      <button class="button" onclick="checkAnswer('1')">1 month</button>
+      <button class="button" onclick="checkAnswer('3')">3 months</button>
+      <button class="button" onclick="checkAnswer('6')">6 months</button>
+      <p id="wrong" style="color: red; margin-top: 10px;"></p>
+    </div>
+
+    <div id="screen4" class="hidden">
+      <h1>Final Level</h1>
+      <p>Are you ready to read what's in my heart?</p>
+      <button class="button" onclick="goToScreen(5)">Show Me 💌</button>
+    </div>
+
+    <div id="screen5" class="hidden">
+      <h1>My Love for You</h1>
+      <div class="message">
+        Dearest Praveena,<br><br>
+
+        These past three months with you have been something truly unforgettable. Even though we haven’t met in person yet, your presence in my life feels more real than most things around me. You’ve become my favorite person to talk to, to think about, to imagine a future with.<br><br>
+
+        Your words, your warmth, your honesty—they’ve touched parts of me that no one else has. You've made me feel seen, heard, and valued. I never imagined I could care this deeply for someone across distance and time zones, but here we are, and my heart beats louder each day for you.<br><br>
+
+        I want you to know that this is not just a moment—it's the start of something real. I love you for who you are and for how you make me feel. I can't wait for the day we finally meet, and I get to hold the hand of the person who already holds my heart.<br><br>
+
+        Until that day comes, I’ll be here—loving you more with every sunrise.<br><br>
+
+        Always yours,<br>
+        <em>[Kavineesh Nair]</em>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function goToScreen(number) {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById('screen' + i).classList.add('hidden');
+      }
+      document.getElementById('screen' + number).classList.remove('hidden');
+    }
+
+    function checkAnswer(value) {
+      if (value === '3') {
+        goToScreen(4);
+      } else {
+        document.getElementById('wrong').innerText = "Oops! Try again 🥺";
+      }
+    }
+  </script>
+</body>
+</html>
